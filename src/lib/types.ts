@@ -39,6 +39,27 @@ export interface ProductDetailResponse {
   category: string;
   images: string[];
 }
+  id: number;
+  name: string;
+  price: number;
+  category: string;
+  description: string;
+  discountPercentage: number;
+  discountedPrice: number;
+  images: string[];
+}
+
+export interface ProductDetailResponse {
+  id: number;
+  name: string;
+  description: string;
+  longDescription: string;
+  price: number;
+  discountPercentage: number;
+  discountedPrice: number;
+  category: string;
+  images: string[];
+}
 
 export interface ProductCreateRequest {
   name: string;

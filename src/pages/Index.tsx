@@ -1,10 +1,10 @@
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
-import CategorySection from "@/components/CategorySection";
+import FeaturedSpotlightSection from "@/components/FeaturedSpotlightSection";
+
 import TestimonialSection from "@/components/TestimonialSection";
-import ProductCard from "@/components/ProductCard";
 import FAQSection from "@/components/FAQSection";
-import { products } from "@/lib/data";
+import HomeGallerySection from "@/components/HomeGallerySection";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Truck, Award, Star } from "lucide-react";
@@ -45,46 +45,11 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Featured Products */}
-    <section className="py-20 lg:py-28 bg-background">
-      <div className="container mx-auto px-4 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-14"
-        >
-          <p className="text-xs font-body tracking-[0.35em] text-primary uppercase mb-3">Featured</p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-heading text-gradient-gold">Sacred Collection</h2>
-          <p className="text-muted-foreground mt-4 max-w-lg mx-auto">
-            Handpicked Rudraksha beads of exceptional quality, each authenticated and blessed
-          </p>
-        </motion.div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.filter((p) => p.featured).slice(0, 4).map((p) => (
-            <ProductCard key={p.id} product={p} />
-          ))}
-        </div>
-        
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <Link 
-            to="/products" 
-            className="inline-flex items-center gap-2.5 text-sm font-body font-medium text-primary hover:text-primary/70 transition-colors group"
-          >
-            <span>View All Products</span>
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </motion.div>
-      </div>
-    </section>
+    <FeaturedSpotlightSection />
 
-    <CategorySection />
+    <HomeGallerySection />
+
+    
 
     {/* About Rudraksha - Two Column Layout */}
     <section className="py-20 lg:py-32 bg-gradient-to-b from-secondary via-secondary/50 to-background">
