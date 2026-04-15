@@ -36,6 +36,14 @@ const CategorySection = () => (
           </motion.div>
         ))}
       </div>
+      <div className="text-center mt-10">
+        <Link
+          to="/products"
+          className="inline-flex items-center gap-2 px-8 py-3 rounded-xl border border-primary/30 text-primary font-heading font-semibold hover:bg-primary/10 transition-all duration-300"
+        >
+          View All Products <ArrowRight size={16} />
+        </Link>
+      </div>
     </div>
   </section>
 );
