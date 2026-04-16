@@ -6,6 +6,14 @@ import { galleryApi, GalleryImage } from "@/services/galleryApi";
 
 const MAX_VISIBLE = 5;
 
+const DEMO_IMAGES: GalleryImage[] = [
+  { id: 1, imageUrl: "https://images.unsplash.com/photo-1605433246452-82d9dc1a7a1d?w=400&h=300&fit=crop", displayOrder: 1, isActive: true },
+  { id: 2, imageUrl: "https://images.unsplash.com/photo-1599707367072-cd6c66daa891?w=400&h=300&fit=crop", displayOrder: 2, isActive: true },
+  { id: 3, imageUrl: "https://images.unsplash.com/photo-1618423696806-9a83c56a0e36?w=400&h=300&fit=crop", displayOrder: 3, isActive: true },
+  { id: 4, imageUrl: "https://images.unsplash.com/photo-1604881988758-f2ad6a3729ea?w=400&h=300&fit=crop", displayOrder: 4, isActive: true },
+  { id: 5, imageUrl: "https://images.unsplash.com/photo-1625556702017-0753a1573403?w=400&h=300&fit=crop", displayOrder: 5, isActive: true },
+];
+
 const HomeGallerySection = () => {
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -20,9 +28,11 @@ const HomeGallerySection = () => {
         setIsLoading(true);
         const data = await galleryApi.getAll();
         const sortedData = [...data].sort((a, b) => a.displayOrder - b.displayOrder);
-        setImages(sortedData);
+        setImages(sortedData.length > 0 ? sortedData : DEMO_IMAGES);
       } catch (err) {
-        setError("Failed to load gallery");
+        setImages(DEMO_IMAGES);
+        setIsLoading(false);
+        return;
       } finally {
         setIsLoading(false);
       }
@@ -45,8 +55,6 @@ const HomeGallerySection = () => {
       behavior: "smooth",
     });
   };
-
-  if (error) return null;
 
   return (
     <section className="py-16 lg:py-20 bg-gradient-to-b from-background to-secondary/20">
